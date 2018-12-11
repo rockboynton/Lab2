@@ -27,7 +27,7 @@ void led_init(){ // ? TODO Shouldn't this be led_init?
 		LED5_GPIO, LED6_GPIO, LED7_GPIO, LED8_GPIO, LED9_GPIO};
 	int mode = 1;
 	for (int i = 0; i < LED_COUNT; i++) {
-		
+		// Test
 	}
 
 }
