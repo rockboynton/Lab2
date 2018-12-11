@@ -18,11 +18,11 @@
 //Which bit enables GPIOB?
 #define GPIOBEN 0x01
 //Find the Addresses for the following memory mapped control registers
-#define GPIOB_MODER (volatile uint32_t*) 0x00
-#define GPIOB_PUPDR (volatile uint32_t*) 0x0C
-#define GPIOB_IDR (volatile uint32_t*) 0x10
-#define GPIOB_ODR (volatile uint32_t*) 0x14
-#define GPIOB_BSRR (volatile uint32_t*) 0x18
+#define GPIOB_MODER (volatile uint32_t*) 0x40020400
+#define GPIOB_PUPDR (volatile uint32_t*) 0x4002040C
+#define GPIOB_IDR (volatile uint32_t*) 0x40020410
+#define GPIOB_ODR (volatile uint32_t*) 0x40020414
+#define GPIOB_BSRR (volatile uint32_t*) 0x40020418
 
 /*
  * led_init()
