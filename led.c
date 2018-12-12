@@ -59,13 +59,13 @@ void led_scan(){
 	// Scan the light across
 	for (uint8_t i = 0; i < 10; i++) {
 		led_on(i);
-		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER); // TODO fix
+		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER); 
 		led_off(i);
 	} 
 	// Scan the light back
 	for (uint8_t i = 9; i >= 0; i--) {
 		led_on(i);
-		delay_1ms(currentSpeed); // TODO fix
+		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER); 
 		led_off(i);
 	} 
 }
