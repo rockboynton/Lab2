@@ -47,16 +47,31 @@ void led_off(uint8_t ledIndex){
 }
 
 void led_scan(){
-	//Insert code here
-	
+	// Scan the light across
+	for (uint8_t i = 0; i < 10; i++) {
+		led_on(i);
+		delay_1ms(currentSpeed); // TODO fix
+		led_off(i);
+	} 
+	// Scan the light back
+	for (uint8_t i = 9; i >= 0; i--) {
+		led_on(i);
+		delay_1ms(currentSpeed); // TODO fix
+		led_off(i);
+	} 
 }
 
 void led_flash(){
 	//Insert code here
+	
 }
 
 void led_setSpeed(uint8_t speed){
-	//Insert code here
+	if (0 < speed || speed < 9) {
+		currentSpeed = speed;
+	} else {
+		printf("Error: Index Out of Range\n");
+	}
 }
 
 void led_incSpeed(){
@@ -68,8 +83,7 @@ void led_decSpeed(){
 }
 
 uint8_t getCurrentSpeed() {
-	//Insert code here
-	return 0;
+	return currentSpeed;
 }
 
 uint32_t adjustIndex(uint32_t ledIndex) {
