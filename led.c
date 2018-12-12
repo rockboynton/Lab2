@@ -18,24 +18,20 @@ void led_init(){
 	*(RCC_AHB1ENR) |= (1 << GPIOBEN);
 	// Turn on to set LED0 - LED9 to output mode ("01")
 	// Pins 5-10, 12-15
-	uint32_t ledAndMask = 0x00C003FF;
-	uint32_t ledOrMask = 0x55155400;
-	*(GPIOB_MODER) &= ledAndMask;
-	*(GPIOB_MODER) |= ledOrMask;
+	*(GPIOB_MODER) &= 0x00C003FF;
+	*(GPIOB_MODER) |= 0x55155400;
 }
 
 void led_allOn(){
 	//Insert code here (Hint use ODR)
 	//protect other pins 
-	// BSRR sets set bits in upper half-word
-	*(GPIOB_BSRR) |= 0xF7E00000;
+	// BSRR sets set bits in lower half-word
+	*(GPIOB_BSRR) |= 0xF7E0;
 }
 
 void led_allOff(){
-	//Insert code here (Hint use ODR)
-	//protect other pins
-	// BSRR resets set bits in lower half-word
-	*(GPIOB_BSRR) |= 0x0000F7E0;
+	// BSRR resets set bits in upper half-word
+	*(GPIOB_BSRR) |= 0xF7E0 << 16;
 }
 
 void led_on(uint8_t ledIndex){
