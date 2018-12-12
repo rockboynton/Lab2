@@ -75,11 +75,15 @@ void led_setSpeed(uint8_t speed){
 }
 
 void led_incSpeed(){
-	//Insert code here
+	if (currentSpeed < 9) {
+		currentSpeed++;
+	}
 }
 
 void led_decSpeed(){
-	//Insert code here
+	if (currentSpeed > 0) {
+		currentSpeed--;
+	}
 }
 
 uint8_t getCurrentSpeed() {

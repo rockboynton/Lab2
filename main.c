@@ -26,7 +26,9 @@ int main(){
 	//You may have to load the return into a dummy variable to discard it
 	//Another option would be to look at scanf
 
-
+	// never return
+	for(;;){}
+	
 	return 0;
 }
 
