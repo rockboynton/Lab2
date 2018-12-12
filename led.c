@@ -11,6 +11,7 @@
 #include <stdio.h>
 
 //One solution for the current speed to have a local static variable in this file;
+static uint8_t currentSpeed;
 
 
 void led_init(){ 
@@ -18,7 +19,7 @@ void led_init(){
 	*(RCC_AHB1ENR) |= (1 << GPIOBEN);
 	// Turn on to set LED0 - LED9 to output mode ("01")
 	// Pins 5-10, 12-15
-	*(GPIOB_MODER) &= 0x00C003FF;
+	*(GPIOB_MODER) &= ~0xFF3FFC00;
 	*(GPIOB_MODER) |= 0x55155400;
 }
 
@@ -31,20 +32,23 @@ void led_allOn(){
 
 void led_allOff(){
 	// BSRR resets set bits in upper half-word
-	*(GPIOB_BSRR) |= 0xF7E0 << 16;
+	*(GPIOB_BSRR) |= (0xF7E0 << 16);
 }
 
 void led_on(uint8_t ledIndex){
-	//Insert code here (Hint use BSRR may be helpful)
-	// if
+	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
+	*(GPIOB_BSRR) |= (1 << ledIndex);
 }
 
 void led_off(uint8_t ledIndex){
 	//Insert code here (Hint use BSRR may be helpful)
+	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
+	*(GPIOB_BSRR) |= ((1 << ledIndex) << 16);
 }
 
 void led_scan(){
 	//Insert code here
+	
 }
 
 void led_flash(){
@@ -63,10 +67,18 @@ void led_decSpeed(){
 	//Insert code here
 }
 
-uint8_t getCurrentSpeed()
-{
+uint8_t getCurrentSpeed() {
 	//Insert code here
 	return 0;
+}
+
+uint32_t adjustIndex(uint32_t ledIndex) {
+	if (ledIndex <= 5) {
+		ledIndex += 5;
+	} else if (ledIndex <= 9) {
+		ledIndex += 6;
+	} 
+	return ledIndex;
 }
 
 

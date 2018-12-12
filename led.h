@@ -100,6 +100,11 @@ void led_decSpeed();
  */
 uint8_t getCurrentSpeed();
 
-
+/*
+ * adjustIndex(uint32_t ledIndex)
+ *      Adjusts LED index to the index of pin for corresponding LED as defined on dev. board
+ *      Note: does not account for out-of-bound index
+*/
+uint32_t adjustIndex(uint32_t ledIndex);
 
 #endif
