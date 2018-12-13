@@ -27,7 +27,7 @@ int main(){
 	c = getchar();
 	switch (c) {
 		case 'h': 
-			"help interface here" // ! FIXME
+			printf("help interface here\n"); // ! FIXME
 			break;
 		case 'f': 
 			led_flash(); 

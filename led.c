@@ -13,7 +13,7 @@
 
 
 //One solution for the current speed to have a local static variable in this file;
-static uint8_t currentSpeed;
+static uint8_t currentSpeed = 5;
 
 // Base frequency of 1Hz
 const uint16_t BASE_FREQUENCY = 1000;  
