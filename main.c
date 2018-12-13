@@ -30,7 +30,13 @@ int main(){
 		c = getchar();
 		switch (c) {
 			case 'h': 
-				printf("help interface here\n"); // ! FIXME
+				printf("'h'\t Help/Display Interface\n"
+           			   "'f'\t Flash Lights (10 times)\n"
+           			   "'s'\t Scan lights (Once back and forth)\n"
+           			   "'p'\t Print current speed (0-9)\n"
+           			   "'+'\t Increase speed\n"
+           			   "'-'\t Decrease speed\n"
+           			   "'x'\t Turn off lights\n");
 				break;
 			case 'f': 
 				led_flash(); 
