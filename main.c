@@ -14,22 +14,21 @@
 // main
 int main(){
 
+	// Initialize variables to be used 
 	char c;
-//	char dummy; // to discard after calling getChar()
 
+	// Initialize hardware
 	init_usart2(19200,F_CPU);
-
-	//Insert control and interface code here
-
 	led_init();
 	
-	// Read c into variable 
-	// Note that getchar() will grab the first c
 	
+	// Never return 
 	while (1) {
+		// Read char from user. Note: getchar() will grab the first char
 		c = getchar();
+		// The return will still be in the stream, so remove all extras to empty the stream.
 		while (getchar() != '\n') {
-			c = '0'; // invalid command
+			c = '0'; // If there was more than one character, it wwas an invalid command
 		}
 		switch (c) {
 			case 'h': 
@@ -63,15 +62,9 @@ int main(){
 				printf("Invalid Command.\n");
 				break;
 		}
-//		dummy = getchar();
 	}
-	
-	//The return will still be in the stream
-	//You may have to load the return into a dummy variable to discard it
-	//Another option would be to look at scanf
 
-	// never return
-	
+	// Never returns
 	return 0;
 }
 

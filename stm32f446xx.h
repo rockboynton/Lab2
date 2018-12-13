@@ -1,5 +1,6 @@
 /*
  * stm32f446xx.h
+ * Based on stm32f446xx.s provided by professor Mark Krueger
  */
 
 //include guards
@@ -31,6 +32,7 @@
 #define GPIO_AFRL (volatile uint32_t*) 0x20
 #define GPIO_AFRH (volatile uint32_t*) 0x24
 
+// * Note: Most all of the values below are offsets, unless specified with "_BASE"
 #define GPIO_A (volatile uint32_t*) 0 * GPIO_PINS_PER_PORT
 #define GPIO_B (volatile uint32_t*) 1 * GPIO_PINS_PER_PORT
 #define GPIO_C (volatile uint32_t*) 2 * GPIO_PINS_PER_PORT

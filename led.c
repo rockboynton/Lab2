@@ -12,7 +12,7 @@
 
 
 
-//One solution for the current speed to have a local static variable in this file;
+// Maintain current speed from 0-9
 static uint8_t currentSpeed = 5;
 
 // Base frequency of 500ms
@@ -20,7 +20,6 @@ const uint16_t BASE_FREQUENCY = 500;
 
 // Multiplier to change speed 
 const uint8_t MULTIPLIER = 50;
-
 
 
 void led_init(){ 
@@ -33,24 +32,20 @@ void led_init(){
 }
 
 void led_allOn(){
-	//Insert code here (Hint use ODR)
-	//protect other pins 
-	// BSRR sets set bits in lower half-word
+	// BSRR sets set bits in lower half-word, protects other pins
 	*(GPIOB_BSRR) |= 0xF7E0;
 }
 
 void led_allOff(){
-	// BSRR resets set bits in upper half-word
+	// BSRR resets set bits in upper half-word, protects other pins
 	*(GPIOB_BSRR) |= (0xF7E0 << 16);
 }
 
 void led_on(uint8_t ledIndex){
-//	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
 	*(GPIOB_BSRR) |= (1 << adjustIndex(ledIndex));
 }
 
 void led_off(uint8_t ledIndex){
-	//Insert code here (Hint use BSRR may be helpful)
 	*(GPIOB_BSRR) |= ((1 << adjustIndex(ledIndex)) << 16);
 }
 
@@ -70,7 +65,6 @@ void led_scan(){
 }
 
 void led_flash(){
-	//Insert code here
 	for (int i = 0; i < 10; i++) {
 		led_allOn();
 		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER);
