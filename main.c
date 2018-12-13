@@ -15,6 +15,7 @@
 int main(){
 
 	char c;
+	char dummy; // to discard after calling getChar()
 
 	init_usart2(19200,F_CPU);
 
@@ -53,6 +54,7 @@ int main(){
 				printf("Invalid Command.");
 				break;
 		}
+		dummy = getchar();
 	}
 	
 	//The return will still be in the stream

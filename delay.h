@@ -14,9 +14,9 @@
 #define STK_LOAD (volatile uint32_t*) 0xE000E014
 #define STK_VAL (volatile uint32_t*) 0xE000E018
 
-#define EN 01
-#define TICKINT 02
-#define CLKSOURCE 03
+#define EN 0
+#define TICKINT 1
+#define CLKSOURCE 2
 #define COUNTFLAG 16
 
 /*
