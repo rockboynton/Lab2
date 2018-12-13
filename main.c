@@ -24,41 +24,42 @@ int main(){
 	
 	// Read c into variable 
 	// Note that getchar() will grab the first c
-	c = getchar();
-	switch (c) {
-		case 'h': 
-			printf("help interface here\n"); // ! FIXME
-			break;
-		case 'f': 
-			led_flash(); 
-			break;
-		case 's': 
-			led_scan(); 
-			break;
-		case 'p': 
-			printf("Current Speed: %d\n", getCurrentSpeed()); 
-			break;
-		case '+': 
-			led_incSpeed(); 
-			break;
-		case '-': 
-			led_decSpeed(); 
-			break;
-		case 'x': 
-			led_allOff(); 
-			break;
-		default:
-			printf("Invalid Command.");
-			break;
+	
+	while (1) {
+		c = getchar();
+		switch (c) {
+			case 'h': 
+				printf("help interface here\n"); // ! FIXME
+				break;
+			case 'f': 
+				led_flash(); 
+				break;
+			case 's': 
+				led_scan(); 
+				break;
+			case 'p': 
+				printf("Current Speed: %d\n", getCurrentSpeed()); 
+				break;
+			case '+': 
+				led_incSpeed(); 
+				break;
+			case '-': 
+				led_decSpeed(); 
+				break;
+			case 'x': 
+				led_allOff(); 
+				break;
+			default:
+				printf("Invalid Command.");
+				break;
+		}
 	}
-
 	
 	//The return will still be in the stream
 	//You may have to load the return into a dummy variable to discard it
 	//Another option would be to look at scanf
 
 	// never return
-	for(;;){}
 	
 	return 0;
 }
