@@ -16,17 +16,17 @@ void delay_1ms(uint32_t n){
 		*(STK_CTRL) = (1 << EN) | (1 << CLKSOURCE); // TODO make sure this isn't |=
 
 		// Wait for countflag to be set
-		// uint32_t countFlag = 0;
-		// while (countFlag == 0) {
-		// 	countFlag = *(STK_CTRL) & (1 << COUNTFLAG); // ? Does this work? it should.
-		// }
-		int done = 0;
-		uint32_t countFlag = 0;
-		while (done == 0) {
-			countFlag = *(STK_CTRL) & (1 << COUNTFLAG);
-			if (countFlag == (1 << COUNTFLAG)) {
-				done = 1;
-			} 
-		}
+		 uint32_t countFlag = 0;
+		 while (countFlag == 0) {
+		 	countFlag = *(STK_CTRL) & (1 << COUNTFLAG); // ? Does this work? it should.
+		 }
+//		int done = 0;
+//		uint32_t countFlag = 0;
+//		while (done == 0) {
+//			countFlag = *(STK_CTRL) & (1 << COUNTFLAG);
+//			if (countFlag == (1 << COUNTFLAG)) {
+//				done = 1;
+//			}
+//		}
 	}
 }
