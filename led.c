@@ -16,7 +16,7 @@
 static uint8_t currentSpeed;
 
 // Base frequency of 1Hz
-const uint8_t BASE_FREQUENCY = 1000;  
+const uint16_t BASE_FREQUENCY = 1000;  
 
 // Multiplier to change speed 
 const uint8_t MULTIPLIER = 50;
@@ -72,9 +72,11 @@ void led_scan(){
 
 void led_flash(){
 	//Insert code here
-	led_allOn();
-	delay_1ms(BASE_FREQUENCY - currentSpeed * 10);
-	led_allOff();
+	for (int i = 0; i < 10; i++) {
+		led_allOn();
+		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER);
+		led_allOff();
+	}
 }
 
 void led_setSpeed(uint8_t speed){

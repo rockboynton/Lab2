@@ -9,19 +9,50 @@
 #include "led.h"
 
 #define F_CPU 16000000UL
-#define ARSIZE 10
 
 
 // main
 int main(){
 
+	char c;
+
 	init_usart2(19200,F_CPU);
 
 	//Insert control and interface code here
-	led_init();
-	while 
 
-	//Note that getchar() will grab the first character
+	led_init();
+	
+	// Read c into variable 
+	// Note that getchar() will grab the first c
+	c = getchar();
+	switch (c) {
+		case 'h': 
+			"help interface here" // ! FIXME
+			break;
+		case 'f': 
+			led_flash(); 
+			break;
+		case 's': 
+			led_scan(); 
+			break;
+		case 'p': 
+			printf("Current Speed: %d\n", getCurrentSpeed()); 
+			break;
+		case '+': 
+			led_incSpeed(); 
+			break;
+		case '-': 
+			led_decSpeed(); 
+			break;
+		case 'x': 
+			led_allOff(); 
+			break;
+		default:
+			printf("Invalid Command.");
+			break;
+	}
+
+	
 	//The return will still be in the stream
 	//You may have to load the return into a dummy variable to discard it
 	//Another option would be to look at scanf
