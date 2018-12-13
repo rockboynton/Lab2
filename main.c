@@ -15,7 +15,7 @@
 int main(){
 
 	char c;
-	char dummy; // to discard after calling getChar()
+//	char dummy; // to discard after calling getChar()
 
 	init_usart2(19200,F_CPU);
 
@@ -28,6 +28,9 @@ int main(){
 	
 	while (1) {
 		c = getchar();
+		while (getchar() != '\n') {
+			c = '0'; // invalid command
+		}
 		switch (c) {
 			case 'h': 
 				printf("'h'\t Help/Display Interface\n"
@@ -57,10 +60,10 @@ int main(){
 				led_allOff(); 
 				break;
 			default:
-				printf("Invalid Command.");
+				printf("Invalid Command.\n");
 				break;
 		}
-		dummy = getchar();
+//		dummy = getchar();
 	}
 	
 	//The return will still be in the stream

@@ -15,8 +15,8 @@
 //One solution for the current speed to have a local static variable in this file;
 static uint8_t currentSpeed = 5;
 
-// Base frequency of 1Hz
-const uint16_t BASE_FREQUENCY = 1000;  
+// Base frequency of 500ms
+const uint16_t BASE_FREQUENCY = 500;  
 
 // Multiplier to change speed 
 const uint8_t MULTIPLIER = 50;
@@ -45,14 +45,13 @@ void led_allOff(){
 }
 
 void led_on(uint8_t ledIndex){
-	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
-	*(GPIOB_BSRR) |= (1 << ledIndex);
+//	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
+	*(GPIOB_BSRR) |= (1 << adjustIndex(ledIndex));
 }
 
 void led_off(uint8_t ledIndex){
 	//Insert code here (Hint use BSRR may be helpful)
-	ledIndex = adjustIndex(ledIndex); // TODO try making this one line when its working
-	*(GPIOB_BSRR) |= ((1 << ledIndex) << 16);
+	*(GPIOB_BSRR) |= ((1 << adjustIndex(ledIndex)) << 16);
 }
 
 void led_scan(){
@@ -63,7 +62,7 @@ void led_scan(){
 		led_off(i);
 	} 
 	// Scan the light back
-	for (int i = 9; i >= 0; i--) {
+	for (int i = 8; i >= 0; i--) {
 		led_on(i);
 		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER); 
 		led_off(i);
@@ -76,6 +75,7 @@ void led_flash(){
 		led_allOn();
 		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER);
 		led_allOff();
+		delay_1ms(BASE_FREQUENCY - currentSpeed * MULTIPLIER);
 	}
 }
 
